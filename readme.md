@@ -11,50 +11,6 @@ Throughout each code along and lab in this section, notice that we are never upd
 
 So our goal is to have a button next to each list element with the todo such that when a user clicks on that button, the list element will be removed.  In implementing this, remember that Todos component displays the current list of todos, if we remove a todo from the store's state, the display of that todo should be removed.
 
-## Refactoring into a Todo Component 
-
-Ok, so if you open the components/todos/Todos.js file you can see our react component rendering out the list of Todos.  Now, we are going to add a button next to each Todo, and when that button is deleted we will need to dispatch an action to the store.  It sounds like a good amount of behavior and visuals for each todo element, so let's create a Todo component.  Then, in our Todos component we will no longer have map return an array of li elements, but rather have it return an array of Todo components, and each Todo component will render the list element.  
-
-That was a mouthful.  Let's make the changes.  
-
-If you open up the code, you'll see that inside the src/components/todos folder, we added a new file Todo.js.  Inside it we have a Todo component that currenly just renders a div.  Remember we want it to instead render out the li element that currently lives inside the map function in the Todos component.  Let's move it to our todo component.
-
-src/components/todos/Todo.js
-
-	import React, { Component } from 'react'
-
-	class Todo extends Component {
-	  render(){
-	    return (
-	      <li>{this.props.text}</li>
-	    )
-	  }
-	}
-
-	export default Todo
-
-Now we need to call that component from our map function in the Todos component.  And we need to tell each individual Todo about the text that it is rendering.  So we change our Todos component to the following.
-
-	import React, { Component } from 'react'
-	import Todo from './Todo' //changed line
-
-	class Todos extends Component {
-	  render(){
-	    let todos = this.props.store.getState().todos.map(function(todo){
-	      return <Todo text={todo.text} /> //changed line
-	    })
-	    return(
-	      <ul>
-	        {todos}
-	      </ul>
-	    )
-	  }
-	}
-	
-	export default Todos;
-  
- Alright, we just gave each list element into its own component, and got our code back to working again.  Sounds like a good refactoring.  Now let's start giving our users the ability to delete.  
-
 ## Deleting A Todo
 
 To delete a Todo we should add a button that when clicked, dispatches an action telling the store to delete a specific Todo.  How we tell the store which todo to delete, we'll figure out at the end.  For now let's add in the button, and have it call a method that dispatches a delete action when clicked.  
