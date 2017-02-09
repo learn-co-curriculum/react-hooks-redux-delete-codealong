@@ -89,16 +89,16 @@ An Todo should have an id the moment it gets created. So, we know that our reduc
 let id = 0;
 
 export default function manageTodo(state = {
-	todos: []
+  todos: []
 }, action) {
-	switch (action.type) {
-		case 'ADD_TODO':
-			id++;
-			const todo = Object.assign({}, action.todo, { id: id });
-			return { todos: state.todos.concat(todo) };
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case 'ADD_TODO':
+      id++;
+      const todo = Object.assign({}, action.todo, { id: id });
+      return { todos: state.todos.concat(todo) };
+    default:
+      return state;
+  }
 }
 ```
 
@@ -116,18 +116,18 @@ import Todo from './Todo';
 
 class Todos extends Component {
 
-	render() {
+  render() {
 
-		const todos = this.props.store.getState().todos.map((todo, index) => {
-			return <Todo text={todo.text} key={index} id={todo.id} /* <- code change */ store={this.props.store} /> 
-		});
+    const todos = this.props.store.getState().todos.map((todo, index) => {
+      return <Todo text={todo.text} key={index} id={todo.id} /* <- code change */ store={this.props.store} /> 
+    });
 
-		return(
-			<ul>
-				{todos}
-			</ul>
-		);
-	}
+    return (
+      <ul>
+        {todos}
+      </ul>
+    );
+  }
 };
 
 export default Todos;
@@ -141,10 +141,10 @@ Ok, so now inside of each Todo component, it will have a property of id with the
 ...
 
 handleOnClick() {
-	this.props.store.dispatch({
-		type: 'DELETE_TODO',
-		id: this.props.id,
-	});
+  this.props.store.dispatch({
+    type: 'DELETE_TODO',
+    id: this.props.id,
+  });
 }
 
 ...
