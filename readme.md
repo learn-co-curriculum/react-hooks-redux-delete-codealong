@@ -19,12 +19,11 @@ Ok, so change the todo such that the body of the component looks like the follow
 
 ```javascript
 // ./src/components/todos/Todo.js 
-
 import React, { Component } from 'react';
 
 class Todo extends Component {
 
-  handleOnClick() {
+  handleOnClick = () => {
     this.props.store.dispatch({
       type: 'DELETE_TODO'
     });
@@ -34,7 +33,7 @@ class Todo extends Component {
     return (
       <li>
         {this.props.text}
-        <button onClick={() => this.handleOnClick()} />
+        <button onClick={this.handleOnClick} />
       </li>
     );
   }
