@@ -80,7 +80,7 @@ Now, currently our action says to delete a Todo, but it does not say which one t
 
 #### Give each Todo an id
 
-An Todo should have an id the moment it gets created. So, we know that our reducer creates the Todo when a CREATE_TODO action is dispatched. Let's update the code in there so that it also adds an id.
+A Todo should have an id the moment it gets created. So, we know that our reducer creates the Todo when a CREATE_TODO action is dispatched. Let's update the code in there so that it also adds an id.
 
 ```javascript
 // ./src/reducers/manageTodo.js
