@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class Todo extends Component {
-  render() {
-    return (
-      <li>
-        {this.props.text}
-      </li>
-    );
-  }
-};
+const Todo = props => {
+  console.log(props);
+  return (
+    <div>
+      <span>{props.todo.text}</span><button onClick={() => props.delete(props.todo.id)}>DELETE</button>
+    </div>
+  )
+}
 
-export default Todo
+export default Todo;
