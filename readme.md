@@ -14,7 +14,7 @@ the DOM directly. Instead, we use the Redux pattern to have our store hold and
 update our state, and we then have React display that state. We want to continue
 with this pattern here.  
 
-Our goal this timeis to have a button next to each list element with the todo;
+Our goal this time is to have a button next to each list element with the todo;
 such that when a user clicks on that button, the list element will be removed.
 In implementing this, remember that the `Todos` component displays the current
 list of todos, if we remove a todo from the store's state, the display of that
