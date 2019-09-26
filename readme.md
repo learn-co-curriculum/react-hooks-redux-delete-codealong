@@ -168,6 +168,7 @@ the code in there so that it also adds an id.
 
 ```javascript
 // ./src/reducers/manageTodo.js
+import uuid from 'uuid';
 
 export default function manageTodo(state = {
   todos: [],
@@ -177,7 +178,7 @@ export default function manageTodo(state = {
     case 'ADD_TODO':
 
       const todo = {
-        id: Math.random()*10000000000000000,
+        id: uuid(),
         text: action.payload.text
       }
       return { todos: state.todos.concat(todo) };
@@ -192,9 +193,9 @@ export default function manageTodo(state = {
 }
 ```
 
-Using `Math.random()*10000000000000000` will generate a long random number each
-time a todo is created. Now, instead of just storing an array of strings, we'll
-be storing an array of objects.
+Using `uuid()` will generate a long random string each
+time a todo is created. Now, instead of just storing an array of strings in our store, 
+we'll be storing an array of objects.
 
 This causes a problem 'downstream', though: we need to update our TodosContainer
 to pass the correct content.
