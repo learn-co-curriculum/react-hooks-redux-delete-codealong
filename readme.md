@@ -2,7 +2,7 @@
 
 ## Objectives
 
-With this lesson we'll continue through our journey through Redux. By the end of
+With this lesson we will continue through our journey through Redux. By the end of
 this lesson, you will be able to:
 
   * Delete individual elements
