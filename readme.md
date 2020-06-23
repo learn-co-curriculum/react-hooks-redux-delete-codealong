@@ -151,7 +151,7 @@ export default function manageTodo(state = {
 }
 ```
 
-In our browser, the delete button should now successful cause todos to
+In our browser, the delete button should now successfully cause todos to
 disappear!
 
 There is a problem though. What if you have multiple todos with the same text?
