@@ -262,3 +262,4 @@ this, we gave each Todo a unique id, and then made sure we passed that id into
 each Todo component. Then we made sure to send along that information when
 dispatching an action via `props.delete`. Finally, we had our reducer update the
 state by filtering out the Todo to be deleted.
+
