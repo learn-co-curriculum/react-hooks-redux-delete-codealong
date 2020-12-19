@@ -1,21 +1,33 @@
 {
-  "name": "redux-delete-codealong",
+  "name": "react-hooks-redux-delete-codealong",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "1.1.4"
-  },
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.2",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "uuid": "^3.3.3"
+    "@reduxjs/toolkit": "^1.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.1.3",
+    "react-scripts": "4.0.1",
+    "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-scripts start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
