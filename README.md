@@ -22,7 +22,7 @@ telling the store to delete a specific todo. How we tell the store which todo to
 delete, we'll figure out at the end. For now let's add in the button, and have
 it call a method that dispatches a delete action when clicked.
 
-#### Modifying our Todo
+## Modifying our Todo
 
 We'll be adding a delete button and dispatching an action to remove the todo
 from our Redux store when that button is clicked. Since we're using
@@ -32,7 +32,7 @@ passing props unnecessarily, let's write the dispatch logic directly in the
 
 First, let's update our component to include a delete button:
 
-```js
+```jsx
 // ./src/features/todos/Todo.js
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -58,7 +58,7 @@ the moment, our todos are just strings, stored in an array. Since that is all we
 have to work with, we add an `onClick` attribute to the new button, and a click
 handler:
 
-```js
+```jsx
 function Todo({ text }) {
   const dispatch = useDispatch();
 
@@ -106,7 +106,7 @@ export const { todoAdded, todoRemoved } = todosSlice.actions;
 After exporting our new action, we can use it in the `Todo` component to
 dispatch the "delete" action:
 
-```js
+```jsx
 import { todoRemoved } from "./todosSlice";
 
 function Todo({ text }) {
@@ -134,13 +134,13 @@ With this set up, every todo that matches `action.payload` will be filtered out.
 To get around this, instead of filtering just text, it would be better if we
 gave our Todos specific IDs.
 
-#### Give each Todo an id
+## Give each Todo an id
 
 A Todo should have an id the moment it gets created. So, we know that our
 reducer creates the Todo when a `"todos/todosAdded"` action is dispatched. Let's
 update the code in there so that it also adds an id.
 
-```javascript
+```js
 import { v4 as uuid } from "uuid";
 
 const todosSlice = createSlice({
@@ -170,11 +170,11 @@ an array of objects.
 This causes a problem 'downstream', though: we need to update our `TodosContainer`
 to pass the correct content.
 
-#### Update TodosContainer
+## Update TodosContainer
 
 In `TodosContainer`, our `todoList` variable will need to change a little:
 
-```js
+```jsx
 const todoList = todos.map((todo) => <Todo key={index.id} todo={todo} />);
 ```
 
@@ -184,12 +184,12 @@ ID, and is less prone to errors in the virtual DOM. We'll need both `todo.id`
 and `todo.text` to be passed into Todo so we pass both down as the object,
 `todo`.
 
-#### Update the Todo Component
+## Update the Todo Component
 
 Now that we've got `todo.id`, we can modify the `Todo` component to use `todo.id`
 on click:
 
-```js
+```jsx
 function Todo({ todo }) {
   const dispatch = useDispatch();
 
@@ -209,7 +209,7 @@ function Todo({ todo }) {
 Now, when `dispatch` is called, an action is dispatched that contains an
 _id_ only as its payload.
 
-#### Updating `todoRemoved` in the Reducer
+## Updating `todoRemoved` in the Reducer
 
 Now that we're passing an _id_ in the action payload, we need to modify our reducer
 once more:
@@ -229,8 +229,8 @@ own unique id!
 
 ## Summary
 
-Ok, so in this lesson we covered how to delete a specific Todo. To implement
-this, we gave each Todo a unique id, and then made sure we passed that id into
-each Todo component. Then we made sure to send along that information when
-dispatching an action via `props.delete`. Finally, we had our reducer update the
-state by filtering out the Todo to be deleted.
+In this lesson we covered how to delete a specific Todo. To implement this, we
+gave each Todo a unique id, and then made sure we passed that id into each Todo
+component. Then we made sure to send along that information when dispatching an
+action via `props.delete`. Finally, we had our reducer update the state by
+filtering out the Todo to be deleted.
