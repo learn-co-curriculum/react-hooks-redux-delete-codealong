@@ -175,7 +175,7 @@ to pass the correct content.
 In `TodosContainer`, our `todoList` variable will need to change a little:
 
 ```jsx
-const todoList = todos.map((todo) => <Todo key={index.id} todo={todo} />);
+const todoList = todos.map((todo) => <Todo key={todo.id} todo={todo} />);
 ```
 
 The change is minimal, but this set up is actually better. Previously, `key` was
